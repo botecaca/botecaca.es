@@ -173,8 +173,8 @@
           </label>
           <div class="space-y-2 mb-2">
             <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
-              <input type="radio" name="note-choice" checked onchange="updateCustomNote('Te he traído una mierda. De nada. 💩')" class="text-amber-800 focus:ring-amber-800">
-              <span>«Te he traído una mierda. De nada. 💩»</span>
+              <input type="radio" id="note-default-radio" name="note-choice" checked onchange="updateCustomNote(currentPack === 'duo' ? 'Os he traído una mierda. De nada. 💩' : 'Te he traído una mierda. De nada. 💩')" class="text-amber-800 focus:ring-amber-800">
+              <span id="note-default-text">«Os he traído una mierda. De nada. 💩»</span>
             </label>
             <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
               <input type="radio" name="note-choice" onchange="updateCustomNote('Para que tengas algo a tu nivel encima de la mesa. 😉')" class="text-amber-800 focus:ring-amber-800">
@@ -195,7 +195,7 @@
         <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 mb-4 text-center">
           <span class="text-[10px] uppercase font-bold text-amber-800 block mb-1">Vista previa de la tarjeta que recibirá:</span>
           <div class="bg-white p-3 rounded-lg border border-amber-300 shadow-sm font-medium text-xs text-stone-800 italic" id="card-preview">
-            "Te he traído una mierda. De nada. 💩"
+            "Os he traído una mierda. De nada. 💩"
           </div>
         </div>
 
@@ -368,6 +368,17 @@
       if (heroBadge) heroBadge.innerText = data.badge;
       const heroCaption = document.getElementById('product-hero-caption');
       if (heroCaption) heroCaption.innerText = data.caption;
+
+      // Adaptar texto de la dedicatoria según sea individual o dúo (plural)
+      const defaultRadio = document.getElementById('note-default-radio');
+      const defaultText = document.getElementById('note-default-text');
+      if (defaultRadio && defaultText) {
+        const defaultMsg = type === 'duo' ? 'Os he traído una mierda. De nada. 💩' : 'Te he traído una mierda. De nada. 💩';
+        defaultText.innerText = `«${defaultMsg}»`;
+        if (defaultRadio.checked) {
+          updateLiveCard(defaultMsg);
+        }
+      }
     }
 
     function selectRecipient(btn, title, defaultNote) {
