@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bote Caca 💩 | El Regalo Más Sincero</title>
+  <!-- Tailwind CSS CDN para diseño moderno y responsive instantáneo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .mono {
+      font-family: 'Space Mono', monospace;
+    }
+    .shake-hover:hover {
+      animation: shake 0.5s ease-in-out infinite alternate;
+    }
+    @keyframes shake {
+      0% { transform: rotate(-2deg); }
+      100% { transform: rotate(2deg); }
+    }
+  </style>
+</head>
+<body class="bg-stone-100 text-stone-900 antialiased min-h-screen pb-24">
+
+  <!-- BARRA DE AVISO SUPERIOR -->
+  <div class="bg-amber-900 text-amber-100 text-xs sm:text-sm py-2 px-4 text-center font-semibold tracking-wide flex items-center justify-center gap-2">
+    <span>🤫</span>
+    <span>Envíos 100% Anónimos en 24/48h a toda España</span>
+    <span class="hidden sm:inline">| Embalaje exterior discreto</span>
+  </div>
+
+  <!-- CONTENEDOR PRINCIPAL (MÓVIL-FIRST) -->
+  <main class="max-w-md mx-auto bg-white shadow-xl min-h-screen sm:my-6 sm:rounded-3xl overflow-hidden border border-stone-200">
+
+    <!-- HEADER / BRANDING -->
+    <header class="px-5 py-4 border-b border-stone-100 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-3xl">💩</span>
+        <div>
+          <h1 class="text-xl font-extrabold tracking-tight text-stone-900 leading-none">BOTE CACA</h1>
+          <span class="text-[10px] uppercase font-bold text-stone-600 tracking-wider mono">Muestra Nº 001</span>
+        </div>
+      </div>
+      <div class="bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
+        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+        En stock
+      </div>
+    </header>
+
+    <!-- HERO / PRODUCT SHOWCASE -->
+    <section class="p-5">
+      <!-- Falsa etiqueta viral / Social proof -->
+      <div class="flex items-center gap-1.5 text-xs text-amber-600 font-semibold mb-2">
+        <div class="flex text-amber-500">★★★★★</div>
+        <span>4.9/5 (+620 paquetes enviados)</span>
+      </div>
+
+      <h2 class="text-2xl font-extrabold text-stone-900 leading-tight mb-2">
+        El regalo más sincero que le vas a hacer a alguien.
+      </h2>
+      <p class="text-stone-600 text-sm mb-4 leading-relaxed">
+        Un tarrito de vidrio de 30 ml con muestra oficial, caja de regalo y la dedicatoria que se merece. Ideal para amigos/as, jefes/as, suegros/as, tu ex, familiares o tu pareja.
+      </p>
+
+      <!-- VISUALIZADOR DEL PRODUCTO / TARRO -->
+      <div class="relative bg-gradient-to-b from-stone-50 to-stone-200 rounded-2xl p-6 border border-stone-300 text-center overflow-hidden shadow-inner">
+        <!-- Badge de descuento -->
+        <span class="absolute top-3 right-3 bg-red-600 text-white text-[11px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider shadow">
+          -30% HOY
+        </span>
+
+        <!-- Fotografía real profesional del producto -->
+        <div class="py-2 flex flex-col items-center justify-center">
+          <div class="relative w-48 sm:w-56 rounded-2xl overflow-hidden shadow-2xl border border-stone-200 bg-white">
+            <img src="./bote-caca-pro.jpg" alt="Bote Caca - Specimen #00X" class="w-full h-auto object-cover transform hover:scale-105 transition duration-500">
+            <div class="absolute bottom-2 left-2 right-2 bg-stone-900/80 backdrop-blur text-white text-[10px] font-bold py-1 px-2 rounded-lg mono text-center">
+              FOTO REAL DEL PRODUCTO
+            </div>
+          </div>
+          <span class="text-[11px] text-stone-600 font-medium mt-3">Tarro de cristal 30 ml · Réplica realista de 2,5 cm · Edición Numerada</span>
+        </div>
+
+        <!-- PRECIO DINÁMICO -->
+        <div class="flex flex-col items-center justify-center mt-2">
+          <div class="flex items-baseline justify-center gap-2">
+            <span class="text-3xl font-black text-stone-900" id="hero-price">19,90 €</span>
+            <span class="text-stone-600 line-through text-sm font-semibold" id="hero-old-price">25,80 €</span>
+            <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md" id="hero-discount">Ahorras 5,90€</span>
+          </div>
+          <span class="text-[11px] font-extrabold text-emerald-600 flex items-center gap-1 mt-1">
+            <span>🚀</span> ENVÍO URGENTE GRATIS INCLUIDO
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONFIGURADOR INTERACTIVO (LA CLAVE DE LA CONVERSIÓN) -->
+    <section class="px-5 pb-6">
+      <div class="bg-stone-50 border-2 border-stone-900 rounded-2xl p-4 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)]">
+        <h3 class="text-base font-extrabold text-stone-900 mb-3 flex items-center gap-2">
+          <span>⚡</span>
+          <span>Personaliza tu envío en 3 clics:</span>
+        </h3>
+
+        <!-- PASO 1: SELECTOR DE PACKS -->
+        <div class="mb-5">
+          <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-2 flex items-center justify-between">
+            <span>1. Elige tu formato:</span>
+            <span class="text-[10px] text-emerald-700 font-extrabold bg-emerald-100 px-2 py-0.5 rounded-full">Envío Gratis en ambos</span>
+          </label>
+          <div class="grid grid-cols-2 gap-2" id="pack-group">
+            <!-- PACK DÚO (DESTACADO POR DEFECTO) -->
+            <button type="button" id="btn-pack-duo" class="pack-btn p-3 rounded-xl border-2 border-amber-800 bg-amber-50 hover:bg-amber-100 transition text-left flex flex-col justify-between relative shadow-sm" onclick="selectPack('duo')">
+              <span class="absolute -top-2.5 right-2 bg-amber-800 text-white text-[9px] font-black px-1.5 py-0.5 rounded-md uppercase tracking-wide shadow">
+                🔥 MÁS VENDIDO
+              </span>
+              <div>
+                <span class="text-xs font-bold text-amber-950 block">Pack Dúo (2 Botes)</span>
+                <span class="text-lg font-black text-amber-950 block mt-0.5">19,90 €</span>
+              </div>
+              <span class="text-[10px] text-amber-800 font-bold mt-1">9,95 €/ud · Ahorras 5,90€</span>
+            </button>
+
+            <!-- 1 BOTE INDIVIDUAL -->
+            <button type="button" id="btn-pack-single" class="pack-btn p-3 rounded-xl border border-stone-300 bg-white hover:border-stone-900 transition text-left flex flex-col justify-between text-stone-600" onclick="selectPack('single')">
+              <div>
+                <span class="text-xs font-bold text-stone-700 block">1 Bote Suelto</span>
+                <span class="text-lg font-black text-stone-900 block mt-0.5">12,90 €</span>
+              </div>
+              <span class="text-[10px] text-stone-500 font-semibold mt-1">1 tarro + dedicatoria</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO 2: ¿A quién va dirigido? -->
+        <div class="mb-4">
+          <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-2">
+            2. ¿Para quién es el regalito?
+          </label>
+          <div class="grid grid-cols-2 gap-2" id="recipient-group">
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border-2 border-stone-900 bg-white hover:bg-amber-100 transition text-left flex items-center gap-2" data-name="amigo" onclick="selectRecipient(this, 'Para mi mejor amigo/a', 'Te he traído una mierda. De nada.')">
+              <span>🍺</span> <span>Mi Mejor Amigo/a</span>
+            </button>
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="jefe" onclick="selectRecipient(this, 'Para mi jefe/a', 'Para que tengas algo a tu nivel encima de la mesa.')">
+              <span>👔</span> <span>Mi Jefe/a</span>
+            </button>
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="suegro" onclick="selectRecipient(this, 'Para mi suegro/a', 'Un detalle inolvidable, con todo mi cariño.')">
+              <span>👵</span> <span>Mi Suegro/a</span>
+            </button>
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="ex" onclick="selectRecipient(this, 'Para mi ex', 'Me acordé de ti y no pude resistirme.')">
+              <span>🐍</span> <span>Mi Ex</span>
+            </button>
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="pareja" onclick="selectRecipient(this, 'Para mi pareja', 'Te quiero con locura, pero te mereces esto.')">
+              <span>❤️</span> <span>Mi Pareja</span>
+            </button>
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="familiar" onclick="selectRecipient(this, 'Para un familiar', 'Para el miembro más especial de la familia.')">
+              <span>🏡</span> <span>Un Familiar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO 2: La Dedicatoria -->
+        <div class="mb-4">
+          <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-2">
+            2. Mensaje impreso en la tarjeta:
+          </label>
+          <div class="space-y-2 mb-2">
+            <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
+              <input type="radio" name="note-choice" checked onchange="updateCustomNote('Te he traído una mierda. De nada. 💩')" class="text-amber-800 focus:ring-amber-800">
+              <span>«Te he traído una mierda. De nada. 💩»</span>
+            </label>
+            <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
+              <input type="radio" name="note-choice" onchange="updateCustomNote('Para que tengas algo a tu nivel encima de la mesa. 😉')" class="text-amber-800 focus:ring-amber-800">
+              <span>«Para que tengas algo a tu nivel encima de la mesa.»</span>
+            </label>
+            <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
+              <input type="radio" name="note-choice" onchange="toggleCustomInput(true)" class="text-amber-800 focus:ring-amber-800">
+              <span>✏️ Escribir mi propio mensaje personalizado...</span>
+            </label>
+          </div>
+          <div id="custom-note-container" class="hidden mt-2">
+            <input type="text" id="custom-note-input" maxlength="90" placeholder="Escribe aquí tu dedicatoria..." oninput="updateLiveCard(this.value)" class="w-full text-xs p-2.5 border-2 border-stone-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 font-medium">
+            <span class="text-[10px] text-stone-600 mt-1 block">Máximo 90 caracteres. Nosotros la imprimimos.</span>
+          </div>
+        </div>
+
+        <!-- VISTA PREVIA EN VIVO DE LA TARJETA -->
+        <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 mb-4 text-center">
+          <span class="text-[10px] uppercase font-bold text-amber-800 block mb-1">Vista previa de la tarjeta que recibirá:</span>
+          <div class="bg-white p-3 rounded-lg border border-amber-300 shadow-sm font-medium text-xs text-stone-800 italic" id="card-preview">
+            "Te he traído una mierda. De nada. 💩"
+          </div>
+        </div>
+
+        <!-- PASO 3: CASILLA MÁGICA DE ENVÍO ANÓNIMO -->
+        <div class="p-3 bg-white rounded-xl border-2 border-stone-900 flex items-start gap-3">
+          <input type="checkbox" id="anon-check" checked class="w-5 h-5 mt-0.5 rounded text-stone-900 focus:ring-stone-900 border-stone-400">
+          <label for="anon-check" class="cursor-pointer">
+            <span class="text-xs font-extrabold text-stone-900 block flex items-center gap-1">
+              <span>🤫</span> Envío 100% Confidencial y Anónimo
+            </span>
+            <span class="text-[11px] text-stone-600 block leading-tight mt-0.5">
+              En el paquete pondrá <em>«Laboratorios Clínicos del Descontento»</em>. Jamás revelaremos tu identidad.
+            </span>
+          </label>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BOTÓN DE COMPRA PRINCIPAL (CTA) -->
+    <div class="px-5 mb-8">
+      <button onclick="handleCheckout()" class="w-full bg-amber-900 hover:bg-amber-950 text-white py-4 px-6 rounded-2xl font-black text-base uppercase tracking-wider shadow-lg transform active:scale-95 transition flex items-center justify-center gap-3">
+        <span id="main-cta-text">ENVIAR PACK DÚO AHORA (19,90 €)</span>
+        <span class="text-xl">🚀</span>
+      </button>
+      <div class="flex items-center justify-center gap-4 mt-3 text-[11px] font-bold text-stone-600">
+        <span class="flex items-center gap-1">🔒 Pago 100% Seguro</span>
+        <span>•</span>
+        <span>⚡ Bizum / Apple Pay</span>
+        <span>•</span>
+        <span>📦 Envío Gratis 24/48h</span>
+      </div>
+    </div>
+
+    <!-- QUÉ INCLUYE EL PAQUETE -->
+    <section class="px-5 py-6 bg-stone-50 border-t border-stone-200">
+      <h3 class="text-sm font-extrabold text-stone-900 uppercase tracking-wider mb-4 text-center">
+        ¿Qué incluye cada paquete?
+      </h3>
+      <div class="grid grid-cols-2 gap-3 text-xs">
+        <div class="bg-white p-3 rounded-xl border border-stone-200 shadow-sm flex items-start gap-2">
+          <span class="text-lg">🫙</span>
+          <div>
+            <strong class="block text-stone-900">Vial de vidrio 30 ml</strong>
+            <span class="text-stone-600 text-[11px]">Con rosca hermética y tapa negra mate.</span>
+          </div>
+        </div>
+        <div class="bg-white p-3 rounded-xl border border-stone-200 shadow-sm flex items-start gap-2">
+          <span class="text-lg">💩</span>
+          <div>
+            <strong class="block text-stone-900">Muestra de 2,5 cm</strong>
+            <span class="text-stone-600 text-[11px]">Escultura hiperrealista (inodora y limpia).</span>
+          </div>
+        </div>
+        <div class="bg-white p-3 rounded-xl border border-stone-200 shadow-sm flex items-start gap-2">
+          <span class="text-lg">🏷️</span>
+          <div>
+            <strong class="block text-stone-900">Etiqueta Oficial</strong>
+            <span class="text-stone-600 text-[11px]">Estilo laboratorio clínico "Specimen #00X".</span>
+          </div>
+        </div>
+        <div class="bg-white p-3 rounded-xl border border-stone-200 shadow-sm flex items-start gap-2">
+          <span class="text-lg">💌</span>
+          <div>
+            <strong class="block text-stone-900">Tarjeta + Caja Kraft</strong>
+            <span class="text-stone-600 text-[11px]">Acolchada con virutas y tu dedicatoria.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIONES REALISTAS / CÓMICAS -->
+    <section class="p-5 border-t border-stone-200">
+      <h3 class="text-sm font-extrabold text-stone-900 uppercase tracking-wider mb-4 text-center">
+        Lo que dicen los remitentes:
+      </h3>
+      <div class="space-y-3">
+        <div class="p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-stone-900">Marcos R. (Madrid)</span>
+            <span class="text-amber-500">★★★★★</span>
+          </div>
+          <p class="text-stone-600 italic">"Se lo mandé a mi cuñado por el amigo invisible de forma anónima. Toda la cena intentando averiguar quién fue. Los 12 euros mejor invertidos de mi vida."</p>
+        </div>
+        <div class="p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-stone-900">Laura G. (Barcelona)</span>
+            <span class="text-amber-500">★★★★★</span>
+          </div>
+          <p class="text-stone-600 italic">"La cara de mi compañero de oficina al abrir la caja delante de todos no tiene precio. El tarrito está súper bien hecho."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER SIMPLE -->
+    <footer class="p-6 bg-stone-900 text-stone-400 text-center text-xs">
+      <p class="font-bold text-stone-200 mb-1">BOTE CACA © 2026</p>
+      <p class="text-[11px] text-stone-400">Producto decorativo de humor y parodia. 100% inofensivo y fabricado en resina sintética.</p>
+    </footer>
+
+  </main>
+
+  <!-- BARRA FIJA DE COMPRA RÁPIDA INFERIOR (ESTILO TIKTOK SHOP) -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-stone-200 py-3 px-4 z-50 flex items-center justify-between max-w-md mx-auto shadow-2xl">
+    <div>
+      <span class="text-xs text-stone-600 block leading-none">Total:</span>
+      <span class="text-xl font-black text-stone-900" id="bottom-price">19,90 €</span>
+    </div>
+    <button onclick="handleCheckout()" class="bg-amber-900 hover:bg-amber-950 text-white font-extrabold text-sm py-2.5 px-5 rounded-xl uppercase tracking-wider shadow active:scale-95 transition flex items-center gap-2">
+      <span id="bottom-cta-text">Pedir Pack Dúo (19,90 €)</span>
+      <span>💩</span>
+    </button>
+  </div>
+
+  <!-- SCRIPT INTERACTIVO -->
+  <script>
+    let currentPack = 'duo';
+    const packData = {
+      single: {
+        title: '1 Bote Suelto',
+        price: '12,90 €',
+        oldPrice: '16,90 €',
+        discount: 'Ahorras 4€',
+        ctaText: 'ENVIAR 1 BOTE AHORA (12,90 €)',
+        bottomText: 'Pedir 1 Bote (12,90 €)',
+        stripeUrl: 'https://buy.stripe.com/28E00j8DHeTTf5oegF1sQ00'
+      },
+      duo: {
+        title: 'Pack Dúo (2 Botes)',
+        price: '19,90 €',
+        oldPrice: '25,80 €',
+        discount: 'Ahorras 5,90€',
+        ctaText: 'ENVIAR PACK DÚO AHORA (19,90 €)',
+        bottomText: 'Pedir Pack Dúo (19,90 €)',
+        stripeUrl: 'https://buy.stripe.com/eVq7sLdY1fXX9L43C11sQ01'
+      }
+    };
+
+    function selectPack(type) {
+      currentPack = type;
+      const btnDuo = document.getElementById('btn-pack-duo');
+      const btnSingle = document.getElementById('btn-pack-single');
+
+      if (type === 'duo') {
+        btnDuo.className = 'pack-btn p-3 rounded-xl border-2 border-amber-800 bg-amber-50 hover:bg-amber-100 transition text-left flex flex-col justify-between relative shadow-sm';
+        btnSingle.className = 'pack-btn p-3 rounded-xl border border-stone-300 bg-white hover:border-stone-900 transition text-left flex flex-col justify-between text-stone-600';
+      } else {
+        btnSingle.className = 'pack-btn p-3 rounded-xl border-2 border-amber-800 bg-amber-50 hover:bg-amber-100 transition text-left flex flex-col justify-between relative shadow-sm';
+        btnDuo.className = 'pack-btn p-3 rounded-xl border border-stone-300 bg-white hover:border-stone-900 transition text-left flex flex-col justify-between text-stone-600';
+      }
+
+      const data = packData[type];
+      document.getElementById('hero-price').innerText = data.price;
+      document.getElementById('hero-old-price').innerText = data.oldPrice;
+      document.getElementById('hero-discount').innerText = data.discount;
+      document.getElementById('bottom-price').innerText = data.price;
+      document.getElementById('main-cta-text').innerText = data.ctaText;
+      document.getElementById('bottom-cta-text').innerText = data.bottomText;
+    }
+
+    function selectRecipient(btn, title, defaultNote) {
+      document.querySelectorAll('.recipient-btn').forEach(b => {
+        b.classList.remove('border-stone-900', 'bg-white', 'border-2');
+        b.classList.add('border-stone-300', 'text-stone-600', 'border');
+      });
+      btn.classList.add('border-stone-900', 'bg-white', 'border-2');
+      btn.classList.remove('border-stone-300', 'text-stone-600');
+      
+      const customContainer = document.getElementById('custom-note-container');
+      customContainer.classList.add('hidden');
+      document.querySelector('input[name="note-choice"]').checked = true;
+      updateLiveCard(defaultNote);
+    }
+
+    function updateCustomNote(text) {
+      document.getElementById('custom-note-container').classList.add('hidden');
+      updateLiveCard(text);
+    }
+
+    function toggleCustomInput(show) {
+      const container = document.getElementById('custom-note-container');
+      container.classList.remove('hidden');
+      const input = document.getElementById('custom-note-input');
+      input.focus();
+      if (input.value.trim() !== '') {
+        updateLiveCard(input.value);
+      } else {
+        updateLiveCard('Escribe tu mensaje...');
+      }
+    }
+
+    function updateLiveCard(text) {
+      document.getElementById('card-preview').innerText = `"${text}"`;
+    }
+
+    function handleCheckout() {
+      const packInfo = packData[currentPack];
+      if (packInfo.stripeUrl) {
+        window.location.href = packInfo.stripeUrl;
+      }
+    }
+  </script>
+</body>
+</html>
