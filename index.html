@@ -169,6 +169,12 @@
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="familiar" onclick="selectRecipient(this, 'familiar')">
               <span>🏡</span> <span id="recip-label-familiar">Mis Familiares</span>
             </button>
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="parami" onclick="selectRecipient(this, 'parami')">
+              <span>🙋</span> <span id="recip-label-parami">Para Mí</span>
+            </button>
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="otros" onclick="selectRecipient(this, 'otros')">
+              <span>✨</span> <span id="recip-label-otros">Otros</span>
+            </button>
           </div>
         </div>
 
@@ -402,6 +408,14 @@
       familiar: {
         single: 'Para el miembro más especial de la familia. 🏡',
         duo: 'Para los miembros más especiales de la familia. 🏡'
+      },
+      parami: {
+        single: 'Un autoregalo que me merezco por aguantar tanto. 💩',
+        duo: 'Autoregalo doble que me merezco por aguantar tanto. 💩'
+      },
+      otros: {
+        single: 'Te he traído una mierda. De nada. 💩',
+        duo: 'Os he traído una mierda. De nada. 💩'
       }
     };
 
@@ -437,6 +451,14 @@
       familiar: {
         single: 'Un Familiar',
         duo: 'Mis Familiares'
+      },
+      parami: {
+        single: 'Para Mí',
+        duo: 'Para Mí'
+      },
+      otros: {
+        single: 'Otros',
+        duo: 'Otros'
       }
     };
 
@@ -516,6 +538,9 @@
       } else if (key === 'ex') {
         document.getElementById('note-opt-3').checked = true;
         selectNotePreset(3);
+      } else if (key === 'otros') {
+        document.getElementById('note-opt-custom').checked = true;
+        toggleCustomInput(true);
       } else {
         document.querySelectorAll('input[name="note-choice"]').forEach(r => r.checked = false);
         currentNoteSelection = { type: 'recipient', id: key };
