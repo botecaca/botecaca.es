@@ -74,15 +74,17 @@
           -30% HOY
         </span>
 
-        <!-- Fotografía real profesional del producto -->
+        <!-- Fotografía real profesional del producto (Dinámica según Pack) -->
         <div class="py-2 flex flex-col items-center justify-center">
-          <div class="relative w-48 sm:w-56 rounded-2xl overflow-hidden shadow-2xl border border-stone-200 bg-white">
-            <img src="./bote-caca-pro.jpg" alt="Bote Caca - Specimen #00X" class="w-full h-auto object-cover transform hover:scale-105 transition duration-500">
-            <div class="absolute bottom-2 left-2 right-2 bg-stone-900/80 backdrop-blur text-white text-[10px] font-bold py-1 px-2 rounded-lg mono text-center">
-              FOTO REAL DEL PRODUCTO
+          <div class="relative w-52 sm:w-60 rounded-2xl overflow-hidden shadow-2xl border border-stone-200 bg-white">
+            <img id="product-hero-img" src="./bote-caca-duo.jpg" alt="Bote Caca - Pack Dúo" class="w-full h-auto object-cover transform hover:scale-105 transition duration-500">
+            <div id="product-hero-badge" class="absolute bottom-2 left-2 right-2 bg-stone-900/80 backdrop-blur text-white text-[10px] font-bold py-1 px-2 rounded-lg mono text-center">
+              PACK DÚO (2 BOTES) · FOTO REAL
             </div>
           </div>
-          <span class="text-[11px] text-stone-600 font-medium mt-3">Tarro de cristal 30 ml · Réplica realista de 2,5 cm · Edición Numerada</span>
+          <span id="product-hero-caption" class="text-[11px] text-stone-600 font-medium mt-3 text-center px-4">
+            Pack Dúo (2 botes) · 2 muestras de 30 ml · Caja kraft y tarjeta incluida
+          </span>
         </div>
 
         <!-- PRECIO DINÁMICO -->
@@ -319,7 +321,10 @@
         discount: 'Ahorras 4€',
         ctaText: 'ENVIAR 1 BOTE AHORA (12,90 €)',
         bottomText: 'Pedir 1 Bote (12,90 €)',
-        stripeUrl: 'https://buy.stripe.com/28E00j8DHeTTf5oegF1sQ00'
+        stripeUrl: 'https://buy.stripe.com/28E00j8DHeTTf5oegF1sQ00',
+        img: './bote-caca-pro.jpg',
+        badge: '1 BOTE SUELTO · FOTO REAL',
+        caption: 'Tarro de cristal 30 ml · Réplica realista de 2,5 cm · Edición Numerada'
       },
       duo: {
         title: 'Pack Dúo (2 Botes)',
@@ -328,7 +333,10 @@
         discount: 'Ahorras 5,90€',
         ctaText: 'ENVIAR PACK DÚO AHORA (19,90 €)',
         bottomText: 'Pedir Pack Dúo (19,90 €)',
-        stripeUrl: 'https://buy.stripe.com/eVq7sLdY1fXX9L43C11sQ01'
+        stripeUrl: 'https://buy.stripe.com/eVq7sLdY1fXX9L43C11sQ01',
+        img: './bote-caca-duo.jpg',
+        badge: 'PACK DÚO (2 BOTES) · FOTO REAL',
+        caption: 'Pack Dúo (2 botes) · 2 muestras de 30 ml · Caja kraft y tarjeta incluida'
       }
     };
 
@@ -352,6 +360,14 @@
       document.getElementById('bottom-price').innerText = data.price;
       document.getElementById('main-cta-text').innerText = data.ctaText;
       document.getElementById('bottom-cta-text').innerText = data.bottomText;
+
+      // Actualizar imagen, cartel y pie de foto dinámicamente
+      const heroImg = document.getElementById('product-hero-img');
+      if (heroImg) heroImg.src = data.img;
+      const heroBadge = document.getElementById('product-hero-badge');
+      if (heroBadge) heroBadge.innerText = data.badge;
+      const heroCaption = document.getElementById('product-hero-caption');
+      if (heroCaption) heroCaption.innerText = data.caption;
     }
 
     function selectRecipient(btn, title, defaultNote) {
