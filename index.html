@@ -146,22 +146,22 @@
           </label>
           <div class="grid grid-cols-2 gap-2" id="recipient-group">
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border-2 border-stone-900 bg-white hover:bg-amber-100 transition text-left flex items-center gap-2" data-recipient="amigo" onclick="selectRecipient(this, 'amigo')">
-              <span>🍺</span> <span>Mi Mejor Amigo/a</span>
+              <span>🍺</span> <span id="recip-label-amigo">Mis Mejores Amigos/as</span>
             </button>
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="jefe" onclick="selectRecipient(this, 'jefe')">
-              <span>👔</span> <span>Mi Jefe/a</span>
+              <span>👔</span> <span id="recip-label-jefe">Mis Jefes/as</span>
             </button>
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="suegro" onclick="selectRecipient(this, 'suegro')">
-              <span>👵</span> <span>Mi Suegro/a</span>
+              <span>👵</span> <span id="recip-label-suegro">Mis Suegros</span>
             </button>
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="ex" onclick="selectRecipient(this, 'ex')">
-              <span>🐍</span> <span>Mi Ex</span>
+              <span>🐍</span> <span id="recip-label-ex">Mis Exs</span>
             </button>
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="pareja" onclick="selectRecipient(this, 'pareja')">
-              <span>❤️</span> <span>Mi Pareja</span>
+              <span>❤️</span> <span id="recip-label-pareja">Una Pareja</span>
             </button>
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="familiar" onclick="selectRecipient(this, 'familiar')">
-              <span>🏡</span> <span>Un Familiar</span>
+              <span>🏡</span> <span id="recip-label-familiar">Mis Familiares</span>
             </button>
           </div>
         </div>
@@ -388,6 +388,33 @@
       }
     };
 
+    const recipientLabels = {
+      amigo: {
+        single: 'Mi Mejor Amigo/a',
+        duo: 'Mis Mejores Amigos/as'
+      },
+      jefe: {
+        single: 'Mi Jefe/a',
+        duo: 'Mis Jefes/as'
+      },
+      suegro: {
+        single: 'Mi Suegro/a',
+        duo: 'Mis Suegros'
+      },
+      ex: {
+        single: 'Mi Ex',
+        duo: 'Mis Exs'
+      },
+      pareja: {
+        single: 'Mi Pareja',
+        duo: 'Una Pareja'
+      },
+      familiar: {
+        single: 'Un Familiar',
+        duo: 'Mis Familiares'
+      }
+    };
+
     function selectPack(type) {
       currentPack = type;
       const btnDuo = document.getElementById('btn-pack-duo');
@@ -416,6 +443,12 @@
       if (heroBadge) heroBadge.innerText = data.badge;
       const heroCaption = document.getElementById('product-hero-caption');
       if (heroCaption) heroCaption.innerText = data.caption;
+
+      // Actualizar nombres de destinatarios (plural para Pack Dúo, singular para Bote Suelto)
+      for (const [key, labels] of Object.entries(recipientLabels)) {
+        const el = document.getElementById(`recip-label-${key}`);
+        if (el) el.innerText = labels[type];
+      }
 
       // Actualizar opciones de texto en la tarjeta (plural para Pack Dúo, singular para Bote Suelto)
       const text1 = document.getElementById('note-text-1');
