@@ -154,6 +154,9 @@
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="jefe" onclick="selectRecipient(this, 'jefe')">
               <span>👔</span> <span id="recip-label-jefe">Mis Jefes/as</span>
             </button>
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="profesor" onclick="selectRecipient(this, 'profesor')">
+              <span>🎓</span> <span id="recip-label-profesor">Mis Profesores/as</span>
+            </button>
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="suegro" onclick="selectRecipient(this, 'suegro')">
               <span>👵</span> <span id="recip-label-suegro">Mis Suegros</span>
             </button>
@@ -163,7 +166,7 @@
             <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="pareja" onclick="selectRecipient(this, 'pareja')">
               <span>❤️</span> <span id="recip-label-pareja">Una Pareja</span>
             </button>
-            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600 col-span-2" data-recipient="familiar" onclick="selectRecipient(this, 'familiar')">
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="familiar" onclick="selectRecipient(this, 'familiar')">
               <span>🏡</span> <span id="recip-label-familiar">Mis Familiares</span>
             </button>
           </div>
@@ -380,6 +383,10 @@
         single: 'Para que tengas algo a tu nivel encima de la mesa. 😉',
         duo: 'Para que tengáis algo a vuestro nivel encima de la mesa. 😉'
       },
+      profesor: {
+        single: 'Por aguantarme en clase todo el curso. De nada. 🎓',
+        duo: 'Por aguantarnos en clase todo el curso. De nada. 🎓'
+      },
       suegro: {
         single: 'Un detalle inolvidable, con todo mi cariño. 👵',
         duo: 'Un detalle inolvidable, con todo nuestro cariño para ambos. 👵👴'
@@ -410,6 +417,10 @@
       jefe: {
         single: 'Mi Jefe/a',
         duo: 'Mis Jefes/as'
+      },
+      profesor: {
+        single: 'Mi Profesor/a',
+        duo: 'Mis Profesores/as'
       },
       suegro: {
         single: 'Mi Suegro/a',
