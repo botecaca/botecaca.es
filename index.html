@@ -145,43 +145,47 @@
             2. ¿Para quién es el regalito?
           </label>
           <div class="grid grid-cols-2 gap-2" id="recipient-group">
-            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border-2 border-stone-900 bg-white hover:bg-amber-100 transition text-left flex items-center gap-2" data-name="amigo" onclick="selectRecipient(this, 'Para mi mejor amigo/a', 'Te he traído una mierda. De nada.')">
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border-2 border-stone-900 bg-white hover:bg-amber-100 transition text-left flex items-center gap-2" data-recipient="amigo" onclick="selectRecipient(this, 'amigo')">
               <span>🍺</span> <span>Mi Mejor Amigo/a</span>
             </button>
-            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="jefe" onclick="selectRecipient(this, 'Para mi jefe/a', 'Para que tengas algo a tu nivel encima de la mesa.')">
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="jefe" onclick="selectRecipient(this, 'jefe')">
               <span>👔</span> <span>Mi Jefe/a</span>
             </button>
-            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="suegro" onclick="selectRecipient(this, 'Para mi suegro/a', 'Un detalle inolvidable, con todo mi cariño.')">
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="suegro" onclick="selectRecipient(this, 'suegro')">
               <span>👵</span> <span>Mi Suegro/a</span>
             </button>
-            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="ex" onclick="selectRecipient(this, 'Para mi ex', 'Me acordé de ti y no pude resistirme.')">
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="ex" onclick="selectRecipient(this, 'ex')">
               <span>🐍</span> <span>Mi Ex</span>
             </button>
-            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="pareja" onclick="selectRecipient(this, 'Para mi pareja', 'Te quiero con locura, pero te mereces esto.')">
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="pareja" onclick="selectRecipient(this, 'pareja')">
               <span>❤️</span> <span>Mi Pareja</span>
             </button>
-            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-name="familiar" onclick="selectRecipient(this, 'Para un familiar', 'Para el miembro más especial de la familia.')">
+            <button type="button" class="recipient-btn py-2 px-3 text-xs font-bold rounded-xl border border-stone-300 bg-white hover:bg-stone-100 transition text-left flex items-center gap-2 text-stone-600" data-recipient="familiar" onclick="selectRecipient(this, 'familiar')">
               <span>🏡</span> <span>Un Familiar</span>
             </button>
           </div>
         </div>
 
-        <!-- PASO 2: La Dedicatoria -->
+        <!-- PASO 3: La Dedicatoria -->
         <div class="mb-4">
           <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-2">
-            2. Mensaje impreso en la tarjeta:
+            3. Mensaje impreso en la tarjeta:
           </label>
           <div class="space-y-2 mb-2">
             <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
-              <input type="radio" id="note-default-radio" name="note-choice" checked onchange="updateCustomNote(currentPack === 'duo' ? 'Os he traído una mierda. De nada. 💩' : 'Te he traído una mierda. De nada. 💩')" class="text-amber-800 focus:ring-amber-800">
-              <span id="note-default-text">«Os he traído una mierda. De nada. 💩»</span>
+              <input type="radio" id="note-opt-1" name="note-choice" checked onchange="selectNotePreset(1)" class="text-amber-800 focus:ring-amber-800">
+              <span id="note-text-1">«Os he traído una mierda. De nada. 💩»</span>
             </label>
             <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
-              <input type="radio" name="note-choice" onchange="updateCustomNote('Para que tengas algo a tu nivel encima de la mesa. 😉')" class="text-amber-800 focus:ring-amber-800">
-              <span>«Para que tengas algo a tu nivel encima de la mesa.»</span>
+              <input type="radio" id="note-opt-2" name="note-choice" onchange="selectNotePreset(2)" class="text-amber-800 focus:ring-amber-800">
+              <span id="note-text-2">«Para que tengáis algo a vuestro nivel encima de la mesa. 😉»</span>
             </label>
             <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
-              <input type="radio" name="note-choice" onchange="toggleCustomInput(true)" class="text-amber-800 focus:ring-amber-800">
+              <input type="radio" id="note-opt-3" name="note-choice" onchange="selectNotePreset(3)" class="text-amber-800 focus:ring-amber-800">
+              <span id="note-text-3">«Nos acordamos de vosotros y no pudimos resistirnos. 🎁»</span>
+            </label>
+            <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
+              <input type="radio" id="note-opt-custom" name="note-choice" onchange="toggleCustomInput(true)" class="text-amber-800 focus:ring-amber-800">
               <span>✏️ Escribir mi propio mensaje personalizado...</span>
             </label>
           </div>
@@ -199,7 +203,7 @@
           </div>
         </div>
 
-        <!-- PASO 3: CASILLA MÁGICA DE ENVÍO ANÓNIMO -->
+        <!-- PASO 4: CASILLA MÁGICA DE ENVÍO ANÓNIMO -->
         <div class="p-3 bg-white rounded-xl border-2 border-stone-900 flex items-start gap-3">
           <input type="checkbox" id="anon-check" checked class="w-5 h-5 mt-0.5 rounded text-stone-900 focus:ring-stone-900 border-stone-400">
           <label for="anon-check" class="cursor-pointer">
@@ -340,6 +344,50 @@
       }
     };
 
+    let currentNoteSelection = { type: 'preset', id: 1 };
+
+    const notePresets = {
+      1: {
+        single: 'Te he traído una mierda. De nada. 💩',
+        duo: 'Os he traído una mierda. De nada. 💩'
+      },
+      2: {
+        single: 'Para que tengas algo a tu nivel encima de la mesa. 😉',
+        duo: 'Para que tengáis algo a vuestro nivel encima de la mesa. 😉'
+      },
+      3: {
+        single: 'Me acordé de ti y no pude resistirme. 🎁',
+        duo: 'Nos acordamos de vosotros y no pudimos resistirnos. 🎁'
+      }
+    };
+
+    const recipientNotes = {
+      amigo: {
+        single: 'Te he traído una mierda. De nada. 💩',
+        duo: 'Os he traído una mierda. De nada. 💩'
+      },
+      jefe: {
+        single: 'Para que tengas algo a tu nivel encima de la mesa. 😉',
+        duo: 'Para que tengáis algo a vuestro nivel encima de la mesa. 😉'
+      },
+      suegro: {
+        single: 'Un detalle inolvidable, con todo mi cariño. 👵',
+        duo: 'Un detalle inolvidable, con todo nuestro cariño para ambos. 👵👴'
+      },
+      ex: {
+        single: 'Me acordé de ti y no pude resistirme. 🐍',
+        duo: 'Nos acordamos de vosotros y no pudimos resistirnos. 🐍'
+      },
+      pareja: {
+        single: 'Te quiero con locura, pero te mereces esto. ❤️',
+        duo: 'Para la parejita feliz: os merecéis esto y más. ❤️'
+      },
+      familiar: {
+        single: 'Para el miembro más especial de la familia. 🏡',
+        duo: 'Para los miembros más especiales de la familia. 🏡'
+      }
+    };
+
     function selectPack(type) {
       currentPack = type;
       const btnDuo = document.getElementById('btn-pack-duo');
@@ -369,19 +417,29 @@
       const heroCaption = document.getElementById('product-hero-caption');
       if (heroCaption) heroCaption.innerText = data.caption;
 
-      // Adaptar texto de la dedicatoria según sea individual o dúo (plural)
-      const defaultRadio = document.getElementById('note-default-radio');
-      const defaultText = document.getElementById('note-default-text');
-      if (defaultRadio && defaultText) {
-        const defaultMsg = type === 'duo' ? 'Os he traído una mierda. De nada. 💩' : 'Te he traído una mierda. De nada. 💩';
-        defaultText.innerText = `«${defaultMsg}»`;
-        if (defaultRadio.checked) {
-          updateLiveCard(defaultMsg);
-        }
+      // Actualizar opciones de texto en la tarjeta (plural para Pack Dúo, singular para Bote Suelto)
+      const text1 = document.getElementById('note-text-1');
+      const text2 = document.getElementById('note-text-2');
+      const text3 = document.getElementById('note-text-3');
+      if (text1) text1.innerText = `«${notePresets[1][type]}»`;
+      if (text2) text2.innerText = `«${notePresets[2][type]}»`;
+      if (text3) text3.innerText = `«${notePresets[3][type]}»`;
+
+      // Actualizar vista previa de la tarjeta en concordancia
+      if (currentNoteSelection.type === 'preset') {
+        updateLiveCard(notePresets[currentNoteSelection.id][type]);
+      } else if (currentNoteSelection.type === 'recipient') {
+        updateLiveCard(recipientNotes[currentNoteSelection.id][type]);
       }
     }
 
-    function selectRecipient(btn, title, defaultNote) {
+    function selectNotePreset(id) {
+      currentNoteSelection = { type: 'preset', id: id };
+      document.getElementById('custom-note-container').classList.add('hidden');
+      updateLiveCard(notePresets[id][currentPack]);
+    }
+
+    function selectRecipient(btn, key) {
       document.querySelectorAll('.recipient-btn').forEach(b => {
         b.classList.remove('border-stone-900', 'bg-white', 'border-2');
         b.classList.add('border-stone-300', 'text-stone-600', 'border');
@@ -389,18 +447,26 @@
       btn.classList.add('border-stone-900', 'bg-white', 'border-2');
       btn.classList.remove('border-stone-300', 'text-stone-600');
       
-      const customContainer = document.getElementById('custom-note-container');
-      customContainer.classList.add('hidden');
-      document.querySelector('input[name="note-choice"]').checked = true;
-      updateLiveCard(defaultNote);
-    }
-
-    function updateCustomNote(text) {
       document.getElementById('custom-note-container').classList.add('hidden');
-      updateLiveCard(text);
+
+      if (key === 'amigo') {
+        document.getElementById('note-opt-1').checked = true;
+        selectNotePreset(1);
+      } else if (key === 'jefe') {
+        document.getElementById('note-opt-2').checked = true;
+        selectNotePreset(2);
+      } else if (key === 'ex') {
+        document.getElementById('note-opt-3').checked = true;
+        selectNotePreset(3);
+      } else {
+        document.querySelectorAll('input[name="note-choice"]').forEach(r => r.checked = false);
+        currentNoteSelection = { type: 'recipient', id: key };
+        updateLiveCard(recipientNotes[key][currentPack]);
+      }
     }
 
     function toggleCustomInput(show) {
+      currentNoteSelection = { type: 'custom', id: null };
       const container = document.getElementById('custom-note-container');
       container.classList.remove('hidden');
       const input = document.getElementById('custom-note-input');
