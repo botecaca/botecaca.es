@@ -94,7 +94,7 @@
             <span class="text-stone-600 line-through text-sm font-semibold" id="hero-old-price">25,80 €</span>
             <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md" id="hero-discount">Ahorras 5,90€</span>
           </div>
-          <span class="text-[11px] font-extrabold text-emerald-600 flex items-center gap-1 mt-1">
+          <span class="text-[11px] font-extrabold text-emerald-600 flex items-center gap-1 mt-1" id="hero-shipping-badge">
             <span>📦</span> ENVÍO GRATIS INCLUIDO (PENÍNSULA)
           </span>
         </div>
@@ -218,7 +218,42 @@
           </div>
         </div>
 
-        <!-- PASO 4: CASILLA MÁGICA DE ENVÍO ANÓNIMO -->
+        <!-- PASO 4: DESTINO DEL ENVÍO -->
+        <div class="mb-4">
+          <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-2 flex items-center justify-between">
+            <span>4. Destino del envío:</span>
+            <span id="shipping-badge-status" class="text-[10px] text-emerald-700 font-extrabold bg-emerald-100 px-2 py-0.5 rounded-full">Envío Gratis</span>
+          </label>
+          <div class="grid grid-cols-3 gap-2" id="shipping-destination-group">
+            <!-- PENÍNSULA (GRATIS) -->
+            <button type="button" id="ship-peninsula" class="shipping-btn p-2.5 rounded-xl border-2 border-stone-900 bg-white transition text-center flex flex-col items-center justify-center relative shadow-sm" onclick="selectShipping('peninsula')">
+              <span class="text-base">🇪🇸</span>
+              <span class="text-xs font-bold text-stone-900 mt-0.5">Península</span>
+              <span class="text-[10px] text-emerald-700 font-extrabold bg-emerald-100 px-1.5 py-0.5 rounded mt-1">GRATIS</span>
+            </button>
+
+            <!-- BALEARES (+4,50 €) -->
+            <button type="button" id="ship-baleares" class="shipping-btn p-2.5 rounded-xl border border-stone-300 bg-white hover:bg-stone-50 transition text-center flex flex-col items-center justify-center relative text-stone-600" onclick="selectShipping('baleares')">
+              <span class="text-base">🏝️</span>
+              <span class="text-xs font-bold text-stone-800 mt-0.5">Baleares</span>
+              <span class="text-[10px] text-amber-900 font-bold bg-amber-100 px-1.5 py-0.5 rounded mt-1">+4,50 €</span>
+            </button>
+
+            <!-- CANARIAS (NO DISPONIBLE) -->
+            <button type="button" id="ship-canarias" class="shipping-btn p-2.5 rounded-xl border border-stone-200 bg-stone-100 transition text-center flex flex-col items-center justify-center relative opacity-70 cursor-pointer hover:border-amber-400" onclick="selectShipping('canarias')">
+              <span class="text-base">🌋</span>
+              <span class="text-xs font-semibold text-stone-500 mt-0.5">Canarias</span>
+              <span class="text-[9px] text-stone-600 font-medium mt-1 leading-tight">No disp.</span>
+            </button>
+          </div>
+          <!-- AVISO CANARIAS SI SE HACE CLICK -->
+          <div id="canarias-notice" class="hidden mt-2 p-2.5 bg-amber-50 border border-amber-300 rounded-xl text-[11px] text-amber-950 flex items-start gap-2">
+            <span>⚠️</span>
+            <span><strong>Canarias no disponible temporalmente:</strong> No realizamos envíos a las Islas Canarias debido a trámites aduaneros y gestión de DUA que comprometen la entrega anónima. ¡Disculpa las molestias!</span>
+          </div>
+        </div>
+
+        <!-- PASO 5: CASILLA MÁGICA DE ENVÍO ANÓNIMO -->
         <div class="p-3 bg-white rounded-xl border-2 border-stone-900 flex items-start gap-3">
           <input type="checkbox" id="anon-check" checked class="w-5 h-5 mt-0.5 rounded text-stone-900 focus:ring-stone-900 border-stone-400">
           <label for="anon-check" class="cursor-pointer">
@@ -245,7 +280,7 @@
         <span>•</span>
         <span>⚡ Bizum / Apple Pay</span>
         <span>•</span>
-        <span>📦 Envío Gratis 24/48h (Península)</span>
+        <span id="shipping-trust-badge">📦 Envío Gratis 24/48h (Península)</span>
       </div>
     </div>
 
@@ -332,27 +367,35 @@
   <!-- SCRIPT INTERACTIVO -->
   <script>
     let currentPack = 'duo';
+    let currentShipping = 'peninsula';
+    const shippingCosts = {
+      peninsula: 0.0,
+      baleares: 4.50
+    };
+
     const packData = {
       single: {
         title: '1 Bote Suelto',
-        price: '12,90 €',
+        basePrice: 12.90,
         oldPrice: '16,90 €',
         discount: 'Ahorras 4€',
-        ctaText: 'ENVIAR 1 BOTE AHORA (12,90 €)',
-        bottomText: 'Pedir 1 Bote (12,90 €)',
+        ctaName: 'ENVIAR 1 BOTE AHORA',
+        bottomName: 'Pedir 1 Bote',
         stripeUrl: 'https://buy.stripe.com/28E00j8DHeTTf5oegF1sQ00',
+        stripeUrlBaleares: '',
         img: './bote-caca-pro.jpg',
         badge: '1 BOTE SUELTO · FOTO REAL',
         caption: 'Tarro de cristal 50 ml · Réplica realista de 3,5 cm · Edición Numerada'
       },
       duo: {
         title: 'Pack Dúo (2 Botes)',
-        price: '19,90 €',
+        basePrice: 19.90,
         oldPrice: '25,80 €',
         discount: 'Ahorras 5,90€',
-        ctaText: 'ENVIAR PACK DÚO AHORA (19,90 €)',
-        bottomText: 'Pedir Pack Dúo (19,90 €)',
+        ctaName: 'ENVIAR PACK DÚO AHORA',
+        bottomName: 'Pedir Pack Dúo',
         stripeUrl: 'https://buy.stripe.com/eVq7sLdY1fXX9L43C11sQ01',
+        stripeUrlBaleares: '',
         img: './bote-caca-duo.jpg',
         badge: 'PACK DÚO (2 BOTES) · FOTO REAL',
         caption: 'Pack Dúo (2 botes) · 2 muestras de 50 ml · Caja kraft y tarjeta incluida'
@@ -462,6 +505,62 @@
       }
     };
 
+    function updatePricingUI() {
+      const data = packData[currentPack];
+      const shipCost = shippingCosts[currentShipping] || 0.0;
+      const total = data.basePrice + shipCost;
+      const totalFormatted = total.toFixed(2).replace('.', ',') + ' €';
+
+      document.getElementById('hero-price').innerText = totalFormatted;
+      document.getElementById('hero-old-price').innerText = data.oldPrice;
+      document.getElementById('hero-discount').innerText = data.discount;
+      document.getElementById('bottom-price').innerText = totalFormatted;
+      document.getElementById('main-cta-text').innerText = `${data.ctaName} (${totalFormatted})`;
+      document.getElementById('bottom-cta-text').innerText = `${data.bottomName} (${totalFormatted})`;
+
+      const heroShipBadge = document.getElementById('hero-shipping-badge');
+      const trustShipBadge = document.getElementById('shipping-trust-badge');
+      if (currentShipping === 'peninsula') {
+        if (heroShipBadge) heroShipBadge.innerHTML = '<span>📦</span> ENVÍO GRATIS INCLUIDO (PENÍNSULA)';
+        if (trustShipBadge) trustShipBadge.innerText = '📦 Envío Gratis 24/48h (Península)';
+      } else if (currentShipping === 'baleares') {
+        if (heroShipBadge) heroShipBadge.innerHTML = '<span>📦</span> ENVÍO A BALEARES (+4,50 €)';
+        if (trustShipBadge) trustShipBadge.innerText = '📦 Envío a Baleares (+4,50 €)';
+      }
+    }
+
+    function selectShipping(zone) {
+      const canariasNotice = document.getElementById('canarias-notice');
+      if (zone === 'canarias') {
+        if (canariasNotice) canariasNotice.classList.remove('hidden');
+        return;
+      }
+      if (canariasNotice) canariasNotice.classList.add('hidden');
+      currentShipping = zone;
+
+      const btnPen = document.getElementById('ship-peninsula');
+      const btnBal = document.getElementById('ship-baleares');
+      const badgeStatus = document.getElementById('shipping-badge-status');
+
+      if (zone === 'peninsula') {
+        btnPen.className = 'shipping-btn p-2.5 rounded-xl border-2 border-stone-900 bg-white transition text-center flex flex-col items-center justify-center relative shadow-sm';
+        btnBal.className = 'shipping-btn p-2.5 rounded-xl border border-stone-300 bg-white hover:bg-stone-50 transition text-center flex flex-col items-center justify-center relative text-stone-600';
+        if (badgeStatus) {
+          badgeStatus.className = 'text-[10px] text-emerald-700 font-extrabold bg-emerald-100 px-2 py-0.5 rounded-full';
+          badgeStatus.innerText = 'Envío Gratis';
+        }
+      } else if (zone === 'baleares') {
+        btnBal.className = 'shipping-btn p-2.5 rounded-xl border-2 border-stone-900 bg-amber-50 transition text-center flex flex-col items-center justify-center relative shadow-sm';
+        btnPen.className = 'shipping-btn p-2.5 rounded-xl border border-stone-300 bg-white hover:bg-stone-50 transition text-center flex flex-col items-center justify-center relative text-stone-600';
+        if (badgeStatus) {
+          badgeStatus.className = 'text-[10px] text-amber-900 font-extrabold bg-amber-100 px-2 py-0.5 rounded-full';
+          badgeStatus.innerText = '+4,50 € Envío';
+        }
+      }
+
+      updatePricingUI();
+    }
+
     function selectPack(type) {
       currentPack = type;
       const btnDuo = document.getElementById('btn-pack-duo');
@@ -475,13 +574,7 @@
         btnDuo.className = 'pack-btn p-3 rounded-xl border border-stone-300 bg-white hover:border-stone-900 transition text-left flex flex-col justify-between text-stone-600';
       }
 
-      const data = packData[type];
-      document.getElementById('hero-price').innerText = data.price;
-      document.getElementById('hero-old-price').innerText = data.oldPrice;
-      document.getElementById('hero-discount').innerText = data.discount;
-      document.getElementById('bottom-price').innerText = data.price;
-      document.getElementById('main-cta-text').innerText = data.ctaText;
-      document.getElementById('bottom-cta-text').innerText = data.bottomText;
+      updatePricingUI();
 
       // Actualizar imagen, cartel y pie de foto dinámicamente
       const heroImg = document.getElementById('product-hero-img');
@@ -572,8 +665,14 @@
     }
 
     function handleCheckout() {
+      if (currentShipping === 'canarias') {
+        alert('Lo sentimos, los envíos a Canarias no están disponibles temporalmente por restricciones aduaneras.');
+        return;
+      }
       const packInfo = packData[currentPack];
-      if (packInfo.stripeUrl) {
+      if (currentShipping === 'baleares' && packInfo.stripeUrlBaleares) {
+        window.location.href = packInfo.stripeUrlBaleares;
+      } else {
         window.location.href = packInfo.stripeUrl;
       }
     }
