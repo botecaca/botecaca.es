@@ -184,21 +184,33 @@
             3. Mensaje impreso en la tarjeta:
           </label>
           <div class="space-y-2 mb-2">
-            <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
-              <input type="radio" id="note-opt-1" name="note-choice" checked onchange="selectNotePreset(1)" class="text-amber-800 focus:ring-amber-800">
-              <span id="note-text-1">«Os he traído una mierda. De nada. 💩»</span>
+            <label class="flex items-center justify-between gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
+              <div class="flex items-center gap-2">
+                <input type="radio" id="note-opt-1" name="note-choice" checked onchange="selectNotePreset(1)" class="text-amber-800 focus:ring-amber-800">
+                <span id="note-text-1">«Os he traído una mierda. De nada. 💩»</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Incluida</span>
             </label>
-            <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
-              <input type="radio" id="note-opt-2" name="note-choice" onchange="selectNotePreset(2)" class="text-amber-800 focus:ring-amber-800">
-              <span id="note-text-2">«Para que tengáis algo a vuestro nivel encima de la mesa. 😉»</span>
+            <label class="flex items-center justify-between gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
+              <div class="flex items-center gap-2">
+                <input type="radio" id="note-opt-2" name="note-choice" onchange="selectNotePreset(2)" class="text-amber-800 focus:ring-amber-800">
+                <span id="note-text-2">«Para que tengáis algo a vuestro nivel encima de la mesa. 😉»</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Incluida</span>
             </label>
-            <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
-              <input type="radio" id="note-opt-3" name="note-choice" onchange="selectNotePreset(3)" class="text-amber-800 focus:ring-amber-800">
-              <span id="note-text-3">«Nos acordamos de vosotros y no pudimos resistirnos. 🎁»</span>
+            <label class="flex items-center justify-between gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
+              <div class="flex items-center gap-2">
+                <input type="radio" id="note-opt-3" name="note-choice" onchange="selectNotePreset(3)" class="text-amber-800 focus:ring-amber-800">
+                <span id="note-text-3">«Nos acordamos de vosotros y no pudimos resistirnos. 🎁»</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Incluida</span>
             </label>
-            <label class="flex items-center gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition">
-              <input type="radio" id="note-opt-custom" name="note-choice" onchange="toggleCustomInput(true)" class="text-amber-800 focus:ring-amber-800">
-              <span>✏️ Escribir mi propio mensaje personalizado...</span>
+            <label class="flex items-center justify-between gap-2 text-xs font-semibold p-2.5 bg-white border border-stone-300 rounded-xl cursor-pointer hover:border-stone-900 transition" id="label-note-custom">
+              <div class="flex items-center gap-2">
+                <input type="radio" id="note-opt-custom" name="note-choice" onchange="toggleCustomInput(true)" class="text-amber-800 focus:ring-amber-800">
+                <span>✏️ Escribir mi propio mensaje personalizado</span>
+              </div>
+              <span class="text-[10px] font-bold text-amber-900 bg-amber-100 px-2 py-0.5 rounded-full border border-amber-300">+1,50 €</span>
             </label>
           </div>
           <div id="custom-note-container" class="hidden mt-2">
@@ -271,7 +283,7 @@
 
     <!-- BOTÓN DE COMPRA PRINCIPAL (CTA) -->
     <div class="px-5 mb-8">
-      <div class="bg-amber-50 border border-amber-200 rounded-xl p-2.5 mb-3 text-center text-xs text-stone-700 leading-relaxed shadow-sm">
+      <div id="checkout-guidance-note" class="bg-amber-50 border border-amber-200 rounded-xl p-2.5 mb-3 text-center text-xs text-stone-700 leading-relaxed shadow-sm">
         💡 <strong>Nota:</strong> En el siguiente paso de pago, introduce tu correo electrónico y la dirección y el nombre de la persona que lo recibirá.
       </div>
 
@@ -387,9 +399,11 @@
         bottomName: 'Pedir 1 Bote',
         stripeUrl: 'https://buy.stripe.com/28E00j8DHeTTf5oegF1sQ00',
         stripeUrlBaleares: 'https://buy.stripe.com/7sYdR91bf2771ey8Wl1sQ03',
+        stripeUrlCustom: 'https://buy.stripe.com/5kQ28r1bf3bbcXgc8x1sQ05',
+        stripeUrlBalearesCustom: 'https://buy.stripe.com/28E14n2fj7rr6ySegF1sQ06',
         img: './bote-caca-pro.jpg',
         badge: '1 BOTE SUELTO · FOTO REAL',
-        caption: 'Tarro de cristal 50 ml · Réplica realista de 3,5 cm · Edición Numerada'
+        caption: '1 Bote Suelto · Muestra de 50 ml · Caja kraft y tarjeta incluida'
       },
       duo: {
         title: 'Pack Dúo (2 Botes)',
@@ -400,6 +414,8 @@
         bottomName: 'Pedir Pack Dúo',
         stripeUrl: 'https://buy.stripe.com/eVq7sLdY1fXX9L43C11sQ01',
         stripeUrlBaleares: 'https://buy.stripe.com/3cI8wPcTX8vv6ySegF1sQ02',
+        stripeUrlCustom: 'https://buy.stripe.com/bJe28r2fj7rr9L45K91sQ04',
+        stripeUrlBalearesCustom: 'https://buy.stripe.com/28E4gzbPTbHH5uOdcB1sQ07',
         img: './bote-caca-duo.jpg',
         badge: 'PACK DÚO (2 BOTES) · FOTO REAL',
         caption: 'Pack Dúo (2 botes) · 2 muestras de 50 ml · Caja kraft y tarjeta incluida'
@@ -512,7 +528,9 @@
     function updatePricingUI() {
       const data = packData[currentPack];
       const shipCost = shippingCosts[currentShipping] || 0.0;
-      const total = data.basePrice + shipCost;
+      const isCustomCard = (currentNoteSelection.type === 'custom');
+      const customCardCost = isCustomCard ? 1.50 : 0.0;
+      const total = data.basePrice + shipCost + customCardCost;
       const totalFormatted = total.toFixed(2).replace('.', ',') + ' €';
 
       document.getElementById('hero-price').innerText = totalFormatted;
@@ -530,6 +548,15 @@
       } else if (currentShipping === 'baleares') {
         if (heroShipBadge) heroShipBadge.innerHTML = '<span>📦</span> ENVÍO A BALEARES (+4,50 €)';
         if (trustShipBadge) trustShipBadge.innerText = '📦 Envío a Baleares (+4,50 €)';
+      }
+
+      const checkoutNote = document.getElementById('checkout-guidance-note');
+      if (checkoutNote) {
+        if (isCustomCard) {
+          checkoutNote.innerHTML = '💡 <strong>Nota:</strong> En el siguiente paso de pago, introduce tu correo, la dirección de quien lo recibirá y confirma el <strong>texto para tu tarjeta personalizada</strong>.';
+        } else {
+          checkoutNote.innerHTML = '💡 <strong>Nota:</strong> En el siguiente paso de pago, introduce tu correo electrónico y la dirección y el nombre de la persona que lo recibirá.';
+        }
       }
     }
 
@@ -567,6 +594,7 @@
 
     function selectPack(type) {
       currentPack = type;
+      const data = packData[type];
       const btnDuo = document.getElementById('btn-pack-duo');
       const btnSingle = document.getElementById('btn-pack-single');
 
@@ -577,8 +605,6 @@
         btnSingle.className = 'pack-btn p-3 rounded-xl border-2 border-amber-800 bg-amber-50 hover:bg-amber-100 transition text-left flex flex-col justify-between relative shadow-sm';
         btnDuo.className = 'pack-btn p-3 rounded-xl border border-stone-300 bg-white hover:border-stone-900 transition text-left flex flex-col justify-between text-stone-600';
       }
-
-      updatePricingUI();
 
       // Actualizar imagen, cartel y pie de foto dinámicamente
       const heroImg = document.getElementById('product-hero-img');
@@ -602,18 +628,23 @@
       if (text2) text2.innerText = `«${notePresets[2][type]}»`;
       if (text3) text3.innerText = `«${notePresets[3][type]}»`;
 
-      // Actualizar vista previa de la tarjeta en concordancia
+      // Actualizar vista previa de la tarjeta en concordancia si está en un preset o recipient
       if (currentNoteSelection.type === 'preset') {
         updateLiveCard(notePresets[currentNoteSelection.id][type]);
-      } else if (currentNoteSelection.type === 'recipient') {
-        updateLiveCard(recipientNotes[currentNoteSelection.id][type]);
+      } else if (currentNoteSelection.type === 'custom' && currentNoteSelection.id) {
+        const input = document.getElementById('custom-note-input');
+        input.value = recipientNotes[currentNoteSelection.id][type];
+        updateCustomNoteInput(input.value);
       }
+
+      updatePricingUI();
     }
 
     function selectNotePreset(id) {
       currentNoteSelection = { type: 'preset', id: id };
       document.getElementById('custom-note-container').classList.add('hidden');
       updateLiveCard(notePresets[id][currentPack]);
+      updatePricingUI();
     }
 
     function selectRecipient(btn, key) {
@@ -623,8 +654,6 @@
       });
       btn.classList.add('border-stone-900', 'bg-white', 'border-2');
       btn.classList.remove('border-stone-300', 'text-stone-600');
-      
-      document.getElementById('custom-note-container').classList.add('hidden');
 
       if (key === 'amigo') {
         document.getElementById('note-opt-1').checked = true;
@@ -635,13 +664,15 @@
       } else if (key === 'ex') {
         document.getElementById('note-opt-3').checked = true;
         selectNotePreset(3);
-      } else if (key === 'otros') {
-        document.getElementById('note-opt-custom').checked = true;
-        toggleCustomInput(true);
       } else {
-        document.querySelectorAll('input[name="note-choice"]').forEach(r => r.checked = false);
-        currentNoteSelection = { type: 'recipient', id: key };
-        updateLiveCard(recipientNotes[key][currentPack]);
+        document.getElementById('note-opt-custom').checked = true;
+        currentNoteSelection = { type: 'custom', id: key };
+        const container = document.getElementById('custom-note-container');
+        container.classList.remove('hidden');
+        const input = document.getElementById('custom-note-input');
+        input.value = recipientNotes[key][currentPack];
+        updateCustomNoteInput(input.value);
+        updatePricingUI();
       }
     }
 
@@ -662,6 +693,7 @@
       const input = document.getElementById('custom-note-input');
       input.focus();
       updateCustomNoteInput(input.value);
+      updatePricingUI();
     }
 
     function updateLiveCard(text) {
@@ -674,11 +706,17 @@
         return;
       }
       const packInfo = packData[currentPack];
-      if (currentShipping === 'baleares' && packInfo.stripeUrlBaleares) {
-        window.location.href = packInfo.stripeUrlBaleares;
+      const isCustom = (currentNoteSelection.type === 'custom');
+
+      let targetUrl = packInfo.stripeUrl;
+
+      if (currentShipping === 'baleares') {
+        targetUrl = isCustom ? packInfo.stripeUrlBalearesCustom : packInfo.stripeUrlBaleares;
       } else {
-        window.location.href = packInfo.stripeUrl;
+        targetUrl = isCustom ? packInfo.stripeUrlCustom : packInfo.stripeUrl;
       }
+
+      window.location.href = targetUrl;
     }
   </script>
 </body>
